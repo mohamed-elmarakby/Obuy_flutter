@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:obuy/register.dart';
 import 'package:obuy/theme.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,7 +20,12 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(26.0),
           child: Column(
             children: <Widget>[
-              Expanded(flex: 1, child: HeaderObuy()),
+              Expanded(
+                  flex: 1,
+                  child: HeaderObuy(
+                    logoPath: 'assets/images/obuy_logo_white.png',
+                    titleColor: 0xFFFFFFFF,
+                  )),
               Align(
                   alignment: Alignment.centerRight,
                   child: Text(
@@ -55,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(
                 flex: 1,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Expanded(
                       //normal login button
@@ -103,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               CircleAvatar(
-                                child: Icon(Icons.face),
+                                child: Icon(FontAwesomeIcons.facebookF),
                               ),
                             ],
                           ),

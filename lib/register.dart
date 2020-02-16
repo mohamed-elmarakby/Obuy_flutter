@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:obuy/theme.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -18,7 +19,12 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.all(26.0),
           child: Column(
             children: <Widget>[
-              Expanded(flex: 1, child: HeaderObuy()),
+              Expanded(
+                  flex: 1,
+                  child: HeaderObuy(
+                    logoPath: 'assets/images/obuy_logo_white.png',
+                    titleColor: 0xFFFFFFFF,
+                  )),
               Align(
                   alignment: Alignment.centerRight,
                   child: Text(
@@ -101,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                               CircleAvatar(
-                                child: Icon(Icons.face),
+                                child: Icon(FontAwesomeIcons.facebookF),
                               ),
                             ],
                           ),
@@ -153,18 +159,25 @@ class ObuyFormField extends StatelessWidget {
 
 class HeaderObuy extends StatelessWidget {
   final int titleColor;
-  HeaderObuy({this.titleColor=0xFFFFFF});
+  final String logoPath;
+  HeaderObuy(
+      {this.titleColor = 0xFFFFFF,
+      this.logoPath = 'assets/images/obuy_logo_orange.png'});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         //put logo here
-        Expanded(flex: 1, child: Icon(Icons.ac_unit)),
+        Expanded(flex: 5, child: Image.asset(logoPath)),
+        Expanded(flex: 1, child: SizedBox()),
         Expanded(
-            flex: 1,
-            child: Text('اطلب .. جمع نقط .. تابع العروض',
-                style:
-                    basicTheme().textTheme.display1.apply(fontSizeFactor: 1.5,color: Color(titleColor))))
+          flex: 3,
+          child: Text('اطلب .. جمع نقط .. تابع العروض',
+              style: basicTheme()
+                  .textTheme
+                  .display1
+                  .apply(fontSizeFactor: 1.5, color: Color(titleColor))),
+        )
       ],
     );
   }

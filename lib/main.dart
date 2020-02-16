@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:obuy/login.dart';
 import 'package:obuy/register.dart';
 import 'package:obuy/theme.dart';
 
@@ -30,19 +31,23 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   List<Widget> pages = [
     Page(
+      imageUrl: 'assets/images/motorcycle.png',
       underImageTitle: 'اطلب',
       underImageSubtitle: 'اطلب كل اللي تحبه من بيتك',
     ),
     Page(
+      imageUrl: 'assets/images/discount.png',
       underImageTitle: 'تابع العروض',
       underImageSubtitle: 'انت مش زي الكل ليك عروض مخصوصة ليك',
     ),
     Page(
+      imageUrl: 'assets/images/gift.png',
       underImageTitle: 'جمع نقاط',
       underImageSubtitle:
           'جمع نقاطك علي كل المشتريات و استبدلهم بهدايا و خصومات',
     ),
     Page(
+      imageUrl: 'assets/images/newsletter.png',
       underImageTitle: 'عندك شكوي',
       underImageSubtitle: 'لو عندك شكوي او اقتراح هنوصلهالك ',
       lastPage: true,
@@ -84,7 +89,7 @@ class Page extends StatelessWidget {
               titleColor: 0xFFFDB000,
             ),
           ),
-          Expanded(flex: 3, child: FlutterLogo()),
+          Expanded(flex: 3, child: Image.asset(imageUrl)),
           Expanded(
             flex: 2,
             child: Column(
