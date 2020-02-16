@@ -152,6 +152,8 @@ class ObuyFormField extends StatelessWidget {
 }
 
 class HeaderObuy extends StatelessWidget {
+  final int titleColor;
+  HeaderObuy({this.titleColor=0xFFFFFF});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -162,7 +164,7 @@ class HeaderObuy extends StatelessWidget {
             flex: 1,
             child: Text('اطلب .. جمع نقط .. تابع العروض',
                 style:
-                    basicTheme().textTheme.display1.apply(fontSizeFactor: 1.5)))
+                    basicTheme().textTheme.display1.apply(fontSizeFactor: 1.5,color: Color(titleColor))))
       ],
     );
   }
