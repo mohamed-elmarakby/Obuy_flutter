@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:obuy/login.dart';
 import 'package:obuy/register.dart';
 import 'package:obuy/theme.dart';
@@ -9,7 +10,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
+      title: 'OBUY',
       debugShowCheckedModeBanner: false,
       theme: basicTheme(),
       builder: (context, child) {
@@ -49,7 +55,7 @@ class _IntroPageState extends State<IntroPage> {
     Page(
       imageUrl: 'assets/images/newsletter.png',
       underImageTitle: 'عندك شكوي',
-      underImageSubtitle: 'لو عندك شكوي او اقتراح هنوصلهالك ',
+      underImageSubtitle: 'لو عندك شكوي او اقتراح هنوصلهالك',
       lastPage: true,
     ),
   ];
@@ -94,33 +100,33 @@ class Page extends StatelessWidget {
             flex: 2,
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      underImageTitle,
-                      style: basicTheme()
-                          .textTheme
-                          .display1
-                          .apply(color: Color(0xFFFDB000), fontSizeFactor: 2.5),
-                    ),
-                  ),
-                ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    underImageSubtitle,
-                    softWrap: true,
+                    underImageTitle,
+                    textAlign: TextAlign.right,
                     style: basicTheme()
                         .textTheme
                         .display1
-                        .apply(color: Colors.black),
+                        .apply(color: Color(0xFFFDB000), fontSizeFactor: 2.5),
                   ),
                 ),
                 Expanded(
-                  child: SizedBox(),
-                  flex: 1,
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        underImageSubtitle,
+                        textAlign: TextAlign.right,
+                        style: basicTheme()
+                            .textTheme
+                            .display1
+                            .apply(color: Colors.black, fontSizeFactor: 1.2),
+                      ),
+                    ),
+                  ),
                 ),
                 lastPage
                     ? Expanded(
@@ -132,7 +138,13 @@ class Page extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(5.0))),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()),
+                              );
+                            },
                             child: Text(
                               'الاشتراك',
                               style: basicTheme()

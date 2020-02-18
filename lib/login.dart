@@ -10,122 +10,128 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //controllers of textFormFields
-  TextEditingController email, mobilePhone, password;
+  TextEditingController email, password;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color(0xFFFDB000),
-        body: Padding(
+        child: Scaffold(
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: basicTheme().primaryColor,
+      body: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(26.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Expanded(
-                  flex: 1,
-                  child: HeaderObuy(
-                    logoPath: 'assets/images/obuy_logo_white.png',
-                    titleColor: 0xFFFFFFFF,
-                  )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  //put logo here
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                  ),
+                  Container(
+                    child: Image.asset('assets/images/obuy_logo_white.png'),
+                    width: 178,
+                    height: 148,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                  ),
+                  Text('اطلب .. جمع نقط .. تابع العروض',
+                      textAlign: TextAlign.center,
+                      style: basicTheme().textTheme.display1.apply(
+                            fontSizeFactor: 1,
+                          )),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32.0),
+                  ),
+                ],
+              ),
               Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'الدخول',
+                    'التسجيل',
                     style: basicTheme()
                         .textTheme
                         .display1
                         .apply(fontSizeFactor: 1.5),
                   )),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: ObuyFormField(
-                        controllerName: email,
-                        inputType: TextInputType.emailAddress,
-                        labelText: 'البريد الالكتروني',
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: ObuyFormField(
-                        controllerName: password,
-                        secure: true,
-                        labelText: 'كلمة المرور',
-                      ),
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: ObuyFormField(
+                  controllerName: email,
+                  inputType: TextInputType.emailAddress,
+                  labelText: 'البريد الالكتروني',
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      //normal login button
-                      flex: 2,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: RaisedButton(
-                          color: basicTheme().accentColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0))),
-                          onPressed: () {},
-                          child: Text(
-                            'تسجيل الدخول',
-                            style: basicTheme()
-                                .textTheme
-                                .display2
-                                .apply(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(flex: 1, child: SizedBox()),
-                    Expanded(
-                      //facebook login button
-                      flex: 2,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: RaisedButton(
-                          color: basicTheme().accentColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0))),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  'تسجيل الدخول بواسطة فيس بوك',
-                                  style: basicTheme()
-                                      .textTheme
-                                      .display2
-                                      .apply(color: Colors.black),
-                                ),
-                              ),
-                              CircleAvatar(
-                                child: Icon(FontAwesomeIcons.facebookF),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(flex: 3, child: SizedBox()),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: ObuyFormField(
+                  controllerName: password,
+                  secure: true,
+                  labelText: 'كلمة المرور',
                 ),
-              )
+              ),
+              Container(
+                height: 55,
+                width: MediaQuery.of(context).size.width,
+                child: RaisedButton(
+                  color: basicTheme().accentColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: Text(
+                    'تسجيل الدخول',
+                    style: basicTheme()
+                        .textTheme
+                        .display2
+                        .apply(color: Colors.black),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 55,
+                width: MediaQuery.of(context).size.width,
+                child: RaisedButton(
+                  color: basicTheme().accentColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'تسجيل الدخول بواسطة فيس بوك',
+                          style: basicTheme()
+                              .textTheme
+                              .display2
+                              .apply(color: Colors.black),
+                        ),
+                      ),
+                      CircleAvatar(
+                        child: Icon(FontAwesomeIcons.facebookF),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 }
 
