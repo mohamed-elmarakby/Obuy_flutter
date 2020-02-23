@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'التسجيل',
+                    'الدخول',
                     style: basicTheme()
                         .textTheme
                         .display1
@@ -161,7 +161,7 @@ class ObuyFormField extends StatelessWidget {
             borderSide: BorderSide(color: Colors.white),
           ),
           labelText: labelText,
-          labelStyle: basicTheme().textTheme.body1),
+          labelStyle: basicTheme().textTheme.body1.apply(color: Colors.white)),
     );
   }
 }

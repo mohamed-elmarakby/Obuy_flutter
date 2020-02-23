@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:obuy/login.dart';
+import 'package:obuy/mainPage.dart';
 import 'package:obuy/theme.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -79,6 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controllerName: password,
                   secure: true,
                   labelText: 'كلمة المرور',
+                  inputType: TextInputType.visiblePassword,
                 ),
               ),
               Container(
@@ -91,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(builder: (context) => MainPage()),
                     );
                   },
                   child: Text(
@@ -263,36 +266,7 @@ class _RegisterPageState extends State<RegisterPage> {
 //       ),
 //     );
 
-class ObuyFormField extends StatelessWidget {
-  final String labelText;
-  final TextInputType inputType;
-  final TextEditingController controllerName;
-  final bool secure;
-  ObuyFormField(
-      {this.inputType,
-      this.labelText,
-      this.controllerName,
-      this.secure = false});
 
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: secure,
-      controller: controllerName,
-      keyboardType: inputType,
-      style: basicTheme().textTheme.body1.apply(),
-      decoration: InputDecoration(
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-          ),
-          labelText: labelText,
-          labelStyle: basicTheme().textTheme.body1),
-    );
-  }
-}
 
 class HeaderObuy extends StatelessWidget {
   final int titleColor;

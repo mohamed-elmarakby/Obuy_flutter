@@ -6,9 +6,10 @@ ThemeData basicTheme() {
         headline: base.headline.copyWith(
           fontFamily: 'ObuyFont',
           fontSize: 16.0,
-          color: Colors.white,
+          color: Color(0xFF3F3D3D),
         ),
-        title: base.title.copyWith(fontSize: 18.0, color: Colors.white),
+        title: base.title.copyWith(
+            fontFamily: 'ObuyFont', fontSize: 18.0, color: Colors.white),
         display1: base.headline.copyWith(
           fontFamily: 'ObuyFont',
           fontSize: 24.0,
@@ -21,11 +22,11 @@ ThemeData basicTheme() {
         ),
         caption: base.caption.copyWith(
           fontFamily: 'ObuyFont',
-          color: Colors.white,
+          color: Color(0xFF3F3D3D),
         ),
         body1: base.body1.copyWith(
           fontFamily: 'ObuyFont',
-          color: Colors.white,
+          color: Color(0xFF3F3D3D),
         ),
         overline: base.overline.copyWith(
           color: Colors.white,
@@ -35,12 +36,13 @@ ThemeData basicTheme() {
 
   final ThemeData base = ThemeData.light();
   return base.copyWith(
+      scaffoldBackgroundColor: Colors.white,
       textTheme: _basicTextTheme(base.textTheme),
       primaryColor: Color(0xFFFDB000),
       indicatorColor: Colors.white,
       accentColor: Color(0xFFFFFFFF),
       iconTheme: IconThemeData(
-        color: Color(0xFFFFFFFF),
+        color: Color(0xFFFDB000),
         size: 20.0,
       ),
       buttonColor: Colors.white,
