@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:obuy/complain.dart';
+import 'package:obuy/myPoints.dart';
 import 'package:obuy/theme.dart';
 
 class MainPage extends StatefulWidget {
@@ -40,8 +42,14 @@ class _MainPageState extends State<MainPage> {
               actions: <Widget>[
                 IconButton(
                   padding: EdgeInsets.all(5.0),
-                  icon: Icon(
-                    Icons.arrow_forward,
+                  icon: IconButton(
+                    icon: Icon(FontAwesomeIcons.listAlt),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Complain()),
+                      );
+                    },
                     color: basicTheme().primaryColor,
                   ),
                   onPressed: () {},
@@ -84,7 +92,14 @@ class _MainMenuListState extends State<MainMenuList> {
       padding: const EdgeInsets.all(16.0),
       child: ListView(
         children: <Widget>[
-          PointsWidget(),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyPoints()),
+                );
+              },
+              child: PointsWidget()),
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
@@ -116,7 +131,7 @@ class _MainMenuListState extends State<MainMenuList> {
                       },
                       child: TypeOfMenu(
                         image: 'assets/images/restaurant.png',
-                        number: ' '+listRestaurants.length.toString(),
+                        number: ' ' + listRestaurants.length.toString(),
                         clicked: click1,
                         type: 'مطعم',
                       ),
@@ -132,7 +147,7 @@ class _MainMenuListState extends State<MainMenuList> {
                       },
                       child: TypeOfMenu(
                         image: 'assets/images/supermarket.png',
-                        number: ' '+listSupermarkets.length.toString(),
+                        number: ' ' + listSupermarkets.length.toString(),
                         clicked: click2,
                         type: 'سوبرماركت',
                       ),

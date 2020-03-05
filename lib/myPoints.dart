@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:obuy/pointsConfirmation.dart';
 import 'package:obuy/theme.dart';
 
 class MyPoints extends StatefulWidget {
@@ -86,6 +87,18 @@ List<PointsList> availablePoints = [
     name: 'تشك تشكن Chickchicken',
     points: '495',
     brandImage: 'assets/images/chicken.png',
+  ),
+  PointsList(
+    type: 'مطعم',
+    name: 'qaws',
+    points: '20',
+    brandImage: 'assets/images/motorcycle.png',
+  ),
+  PointsList(
+    type: 'مطعم',
+    name: 'abcd',
+    points: '2323',
+    brandImage: 'assets/images/newsletter.png',
   ),
 ];
 
@@ -341,36 +354,55 @@ class _RestaurantPointsState extends State<RestaurantPoints> {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: <Widget>[
-                Discounts(
-                    title: 'خصم 10%',
-                    subtitle: 'احصل علي خصم 10% علي طلباتك',
-                    numberOfPoints: 120),
-                Discounts(
-                    title: 'خصم 40%',
-                    subtitle: 'احصل علي خصم 40% علي طلباتك',
-                    numberOfPoints: 350),
-                Discounts(
-                    title: 'وجبة عائلية',
-                    subtitle: 'احصل علي وجبة عائلية مجانية',
-                    numberOfPoints: 550),
-                Discounts(
-                    title: 'وجبة عائلية',
-                    subtitle: 'احصل علي وجبة عائلية مجانية',
-                    numberOfPoints: 550),
-                Discounts(
-                    title: 'مشتريات بقيمة 200 ج',
-                    subtitle: 'مشتريات من تشك تشكن بقيمة 200 جنيه',
-                    numberOfPoints: 1200),
-              ],
-            ),
+            child: Hero(
+                tag: 'pointsDiscount',
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: pointsDiscount.length,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PointsConfirmation(
+                                      place: index,
+                                    )),
+                          );
+                        },
+                        child: pointsDiscount[index],
+                      );
+                    })),
           ),
         ],
       ),
     ));
   }
 }
+
+List pointsDiscount = [
+  Discounts(
+      title: 'خصم 10%',
+      subtitle: 'احصل علي خصم 10% علي طلباتك',
+      numberOfPoints: 120),
+  Discounts(
+      title: 'خصم 40%',
+      subtitle: 'احصل علي خصم 40% علي طلباتك',
+      numberOfPoints: 350),
+  Discounts(
+      title: 'وجبة عائلية',
+      subtitle: 'احصل علي وجبة عائلية مجانية',
+      numberOfPoints: 550),
+  Discounts(
+      title: 'وجبة عائلية',
+      subtitle: 'احصل علي وجبة عائلية مجانية',
+      numberOfPoints: 550),
+  Discounts(
+      title: 'مشتريات بقيمة 200 ج',
+      subtitle: 'مشتريات من تشك تشكن بقيمة 200 جنيه',
+      numberOfPoints: 1200),
+];
 
 class Discounts extends StatelessWidget {
   final int numberOfPoints;
